@@ -9,7 +9,13 @@ public class ProgramDepartment {
 
         DepartmentDao departmentDao = DaoFactory.createDepartmentDao();
 
-        System.out.println("==== TEST 1: department    insert ====");
+        System.out.println("==== TEST 1: department    findById ====");
+
+        Department dep = departmentDao.findById(2);
+        System.out.println(dep);
+
+
+        System.out.println("==== TEST 3: department    insert ====");
 
         Department newdep = new Department(5, "Light");
 
