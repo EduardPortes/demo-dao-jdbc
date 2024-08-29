@@ -24,7 +24,7 @@ public class ProgramDepartment {
         for (Department obj : list){
             System.out.println(obj);
         }
-        
+
         System.out.println("==== TEST 3: department    insert ====");
 
         Department newdep = new Department(5, "Light");
@@ -32,6 +32,13 @@ public class ProgramDepartment {
         departmentDao.insert(newdep);
         System.out.println("Inserted!");
 
+        System.out.println("==== TEST 3: department    update ====");
+
+        dep = new Department(6, "MakeUp");
+
+        departmentDao.update(dep);
+
+        System.out.println("Update completed");
 
     }
 }
