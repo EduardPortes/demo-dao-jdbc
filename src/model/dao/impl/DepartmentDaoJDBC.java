@@ -127,9 +127,8 @@ public class DepartmentDaoJDBC implements DepartmentDao {
                 Department dep = instantiateDepartment(rs);
                 return dep;
             } else {
-                System.out.println("No department with the ID inserted");
+                throw new DbException("No department with the ID inserted");
             }
-            return null;
 
         }catch (SQLException e){
             throw new DbException(e.getMessage());
