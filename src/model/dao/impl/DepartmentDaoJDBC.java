@@ -1,6 +1,5 @@
 package model.dao.impl;
 
-import com.sun.source.tree.WhileLoopTree;
 import db.DB;
 import db.DbException;
 import model.dao.DepartmentDao;
@@ -81,14 +80,32 @@ public class DepartmentDaoJDBC implements DepartmentDao {
             DB.closeStatement(st);
         }
 
-
-
-
-
     }
 
     @Override
     public void deleteById(Integer id) {
+        PreparedStatement st = null;
+        try{
+            st = conn.prepareStatement(
+                    "DELETE FROM department "
+                    + "WHERE Id = ?"
+            );
+
+            st.setInt(1, id);
+            int x = 0;
+
+            x = st.executeUpdate();
+
+            if (x == 0){
+                throw new DbException("No department with the Id inserted");
+            }
+
+
+        } catch (SQLException e){
+            throw new DbException(e.getMessage());
+        } finally {
+            DB.closeStatement(st);
+        }
 
     }
 
